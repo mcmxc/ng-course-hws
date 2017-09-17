@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "module": "system",
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "outFile": "hw1.js",
+    "sourceMap": false,
+    "target": "ES5"
+  },
+  "include": ["./*"],
+  "exclude": ["node_modules"]
+}
