@@ -14,11 +14,11 @@ type Direction = 'top' | 'right' | 'bottom' | 'left';
 
 abstract class Car {
   constructor(
-    public year: number,
-    public engineVolume: number,
-    public power: number,
-    public isWorking: boolean,
-    public color: Color
+    protected year: number,
+    protected engineVolume: number,
+    protected power: number,
+    protected isWorking: boolean,
+    protected color: Color
   ) {}
 
   move(direction: Direction, speed: number): void {
@@ -47,12 +47,12 @@ abstract class Car {
 class BMW extends Car {
   manufacturer: string = 'BMW';
   constructor(
-    public year: number,
-    public engineVolume: number,
-    public power: number,
-    public isWorking: boolean,
-    public color: Color,
-    public maxSpeed: number // new property for this class
+    protected year: number,
+    protected engineVolume: number,
+    protected power: number,
+    protected isWorking: boolean,
+    protected color: Color,
+    protected maxSpeed: number // new property for this class
   ) {
     super(year, engineVolume, power, isWorking, color);
   }
@@ -68,12 +68,12 @@ class BMW extends Car {
 class Audi extends Car {
   manufacturer: string = 'Audi';
   constructor(
-    public year: number,
-    public engineVolume: number,
-    public power: number,
-    public isWorking: boolean,
-    public color: Color,
-    public maxSpeed: number
+    protected year: number,
+    protected engineVolume: number,
+    protected power: number,
+    protected isWorking: boolean,
+    protected color: Color,
+    protected maxSpeed: number
   ) {
     super(year, engineVolume, power, isWorking, color);
   }
