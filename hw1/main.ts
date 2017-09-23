@@ -11,7 +11,7 @@ x6.move('left', 200); // car engine has been started; car is moving to the left 
 q7.move('top', 400); // // car engine has been started; car is moving to the left with a speed of 312 km/h; car engine has been stopped
 
 console.log(x6.color); // RGB(255, 0, 0)
-x6.color = '#00ff000';
+x6.color = '#00ff00';
 console.log(x6.color); // RGB(0, 255, 0)
 
 q7.speed = 1000;
