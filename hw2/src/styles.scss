@@ -1,0 +1,29 @@
+html *,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+body {
+  padding-top: 80px;
+  padding-bottom: 40px;
+}
+
+@import './../node_modules/normalize.css/normalize.css';
+@import './../node_modules/wingcss/dist/wing.min.css';
+// @import './../node_modules/font-awesome/css/font-awesome.min.css';
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: none;
+  outline: none;
+}
+
+input[type='number'] {
+  border-color: #a4a4a4;
+  &:focus,
+  &:active {
+    border-color: #104cfb;
+  }
+}

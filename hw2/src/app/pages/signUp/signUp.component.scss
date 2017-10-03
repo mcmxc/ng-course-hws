@@ -1,0 +1,15 @@
+@media (min-width: 768px) {
+  .sign-up-form__wrap {
+    max-width: 320px;
+  }
+}
+.signup__btn {
+  display: block;
+  width: 100%;
+  font-size: 1.25em;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+fieldset {
+  border: none;
+}

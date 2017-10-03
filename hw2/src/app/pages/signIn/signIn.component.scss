@@ -1,0 +1,15 @@
+@media (min-width: 768px) {
+  .signin-form__wrap {
+    max-width: 320px;
+  }
+}
+.signin__btn {
+  display: block;
+  width: 100%;
+  font-size: 1.25em;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+fieldset {
+  border: none;
+}

@@ -1,0 +1,7 @@
+.description__head {
+  display: flex;
+  justify-content: space-between;
+  > div {
+    display: inline-block;
+  }
+}

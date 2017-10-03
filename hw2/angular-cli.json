@@ -7,19 +7,14 @@
     {
       "root": "src",
       "outDir": "dist",
-      "assets": [
-        "assets",
-        "favicon.ico"
-      ],
+      "assets": ["assets", "favicon.ico"],
       "index": "index.html",
       "main": "main.ts",
       "polyfills": "polyfills.ts",
       "test": "test.ts",
       "tsconfig": "tsconfig.json",
       "prefix": "app",
-      "styles": [
-        "styles.css"
-      ],
+      "styles": ["styles.scss"],
       "scripts": [],
       "environments": {
         "source": "environments/environment.ts",
@@ -49,7 +44,7 @@
     }
   },
   "defaults": {
-    "styleExt": "css",
+    "styleExt": "scss",
     "prefixInterfaces": false,
     "inline": {
       "style": false,

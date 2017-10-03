@@ -1,0 +1,16 @@
+.filter {
+  display: flex;
+  justify-content: space-between;
+  > div {
+    flex: 1;
+    margin: 0 6px;
+  }
+  .year,
+  .region {
+    display: flex;
+    align-items: center;
+    > * {
+      margin: 0 8px;
+    }
+  }
+}

@@ -1,0 +1,20 @@
+.header {
+  background-color: #b6220e;
+  color: #ffffff;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 10;
+}
+.nav {
+  justify-content: space-between;
+}
+
+.nav-item {
+  color: #fff;
+}
+
+.brand__link {
+  color: #fff;
+  text-decoration: none;
+}
