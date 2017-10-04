@@ -1,0 +1,9 @@
+.img__wrap {
+  position: relative;
+}
+.temp-msg {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+}
