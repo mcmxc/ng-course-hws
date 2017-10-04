@@ -17,7 +17,7 @@ import { UserInfoComponent } from './pages/userInfo/userInfo.component';
 
 import { NavComponent } from './pages/home/nav/nav.component';
 import { FilterComponent } from './pages/home/filter/filter.component';
-import { CarCardComponent } from './pages/home/carCard/carCard.component';
+import { CarsListComponent } from './pages/home/carsList/carsList.component';
 import { NotFoundComponent } from './pages/notFound/notFound.component';
 
 @NgModule({
@@ -31,7 +31,7 @@ import { NotFoundComponent } from './pages/notFound/notFound.component';
     DetailsComponent,
     NewArticleComponent,
     UserInfoComponent,
-    CarCardComponent,
+    CarsListComponent,
     NavComponent,
     FilterComponent,
     NotFoundComponent
