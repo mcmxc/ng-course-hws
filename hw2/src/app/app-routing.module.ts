@@ -23,7 +23,7 @@ const routes: Routes = [
     component: SignUpComponent
   },
   {
-    path: 'details', // I believe this path should include some specific car id
+    path: 'details', // this path will include some specific car id
     component: DetailsComponent
   },
   {

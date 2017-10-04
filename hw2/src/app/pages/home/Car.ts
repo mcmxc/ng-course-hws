@@ -1,4 +1,4 @@
 export class Car {
   brand: string;
-  models: any;
+  models: string[];
 }
