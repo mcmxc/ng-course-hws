@@ -1,7 +1,7 @@
 <aside>
   <nav class="menu">
     <ul>
-      <li *ngFor="let car of cars">
+      <li *ngFor="let car of cars" class="{{car.brand.toLowerCase() + '__list-item'}}">
         <a href="">{{car.brand}}</a>
         <ul id="{{car.brand.toLowerCase()}}">
           <li *ngFor="let model of car.models">
