@@ -1,8 +1,50 @@
 <h1>Hometask #3</h1>
 <hr>
-<h1>Progress Bar</h1>
-<app-progress-bar></app-progress-bar>
+<section class="progress-bar--section">
+  <h1>Progress Bar</h1>
+  <app-progress-bar [progress]="progress"></app-progress-bar>
+  <section class="progress-bar-controls">
+    <h1>Controls</h1>
+    <p>
+      <button
+        type="button"
+        class="change-progress__btn"
+        (click)="randomizeProgress()"
+      >
+        Random
+      </button>
+    </p>
+    <p>
+      <label for="range">Range:</label>
+      <input
+        type="range"
+        id="range"
+        class="progress-range__input"
+        [(ngModel)]="progress"
+      >
+    </p>
+    <p>
+      <label for="progressValue">Value:</label>
+      <input
+        type="number"
+        id="progressValue"
+        class="progress-value__input"
+        min="0"
+        max="100"
+        step="1"
+        [(ngModel)]="progress"
+      ><span>&nbsp;%</span>
+    </p>
+  </section>
+</section>
 <hr>
-<app-dropdown></app-dropdown>
+<section class="dropdown--section">
+  <h1>Dropdown</h1>
+  <app-dropdown [items]="dropdownItems"></app-dropdown>
+</section>
 <hr>
-<app-tabs></app-tabs>
+<section class="tabs--section">
+  <h1>Tabs</h1>
+  <app-tabs [tabs]="tabs"></app-tabs>
+</section>
+

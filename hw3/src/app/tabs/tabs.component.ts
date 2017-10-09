@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Tab } from '../models/tab.model';
 
 @Component({
   selector: 'app-tabs',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tabs.component.css']
 })
 export class TabsComponent implements OnInit {
-
-  constructor() { }
-
+  @Input() tabs: Tab[];
+  currentTab: Tab;
   ngOnInit() {
+    this.currentTab = this.tabs[0];
   }
-
+  chooseTab(tab): void {
+    this.currentTab = tab;
+  }
+  isActive(tab): boolean {
+    return tab.label === this.currentTab.label;
+  }
+  constructor() {}
 }

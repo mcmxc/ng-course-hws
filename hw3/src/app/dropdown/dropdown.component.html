@@ -1,3 +1,24 @@
-<section class="dropdown__section">
-  <h1>Dropdown Component</h1>
-</section>
+<div class="dropdown__component">
+  <div class="dropdown__wrapper" [ngClass]="{ 'shown': isShown }">
+    <div
+      class="dropdown-toggle"
+      id="currentValue"
+      (click)="toggleDropdown()"
+      [attr.data-value]="currentItem.value"
+    >
+      {{currentItem.name}}
+      <span class="carret">&#9660;</span>
+    </div>
+    <ul class="dropdown-list">
+      <li
+        class="dropdown-item"
+        [ngClass]="{ 'current': item.value === currentItem.value }"
+        *ngFor="let item of items"
+        [attr.data-value]="item.value"
+        (click)="pickItem(item)"
+      >
+        {{item.name}}
+      </li>
+    </ul>
+  </div>
+</div>

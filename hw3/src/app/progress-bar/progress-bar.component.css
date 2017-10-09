@@ -35,20 +35,4 @@
   transition: width .5s ease-in-out;
 }
 
-.change-progress__btn {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background: #fff;
-  border: 2px solid #000;
-  outline: none;
-  text-transform: uppercase;
-  font-weight: bold;
-  transition: all .2s ease-in-out;
-  transform: scale(1);
-}
-
-.change-progress__btn:active {
-  transform: scale(0.9);
-}
 

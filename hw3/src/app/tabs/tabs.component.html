@@ -1,3 +1,17 @@
-<section class="tabs__section">
-  <h1>Tabs Component</h1>
-</section>
+<div class="tabs__component">
+  <ul class="tabs">
+    <li
+      *ngFor="let tab of tabs"
+      [ngClass]="{ 'active': isActive(tab), 'tab-link': true }"
+      (click)="chooseTab(tab)"
+    >{{tab.label}}</li>
+  </ul>
+  <div
+    *ngFor="let tab of tabs"
+    [id]="tab.label"
+    [ngClass]="{ 'active': isActive(tab), 'tab-content': true }"
+  >
+    <h1>{{tab.header}}</h1>
+    <p>{{tab.content}}</p>
+  </div>
+</div>

@@ -1,15 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-progress-bar',
   templateUrl: './progress-bar.component.html',
-  styleUrls: ['./progress-bar.component.css']
+  styleUrls: ['./progress-bar.component.css'],
+  encapsulation: ViewEncapsulation.Native
 })
 export class ProgressBarComponent {
-
-  public progress = '50';
-
-  randomProgress() {
-    this.progress = `${(Math.random() * 100).toFixed()}`;
-  }
+  @Input() progress: string;
 }

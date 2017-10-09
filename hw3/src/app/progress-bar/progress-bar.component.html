@@ -6,39 +6,7 @@
     {{progress}}%
   </div>
 </div>
-<section class="controls">
-  <h1>Controls</h1>
-  <p>
-    <button
-      type="button"
-      class="change-progress__btn"
-      (click)="randomProgress()"
-    >
-      Random
-    </button>
-  </p>
-  <p>
-    <label for="range">Range:</label>
-    <input
-      type="range"
-      id="range"
-      class="progress-range__input"
-      [(ngModel)]="progress"
-    >
-  </p>
-  <p>
-    <label for="progressValue">Value:</label>
-    <input
-      type="number"
-      id="progressValue"
-      class="progress-value__input"
-      min="0"
-      max="100"
-      step="1"
-      [(ngModel)]="progress"
-    >
-  </p>
-</section>
+
 
 
 

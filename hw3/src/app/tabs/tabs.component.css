@@ -1,0 +1,34 @@
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+.tabs {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  margin-bottom: 0;
+}
+.tab-link {
+  flex-basis: 10%;
+  align-self: center;
+  cursor: pointer;
+  text-transform: uppercase;
+  color: #bbbbbb;
+  text-align: center;
+  border-bottom: 4px solid transparent;
+  padding: 8px 0;
+}
+.tab-link.active {
+  border-color: #93ffa8;
+  font-weight: bold;
+  color: #333;
+}
+.tab-content {
+  background: #eee;
+  padding: 2rem;
+  margin-bottom: 35px;
+}
+
