@@ -10,7 +10,7 @@ export class TabsComponent implements OnInit {
   @Input() tabs: Tab[];
   currentTab: Tab;
   ngOnInit() {
-    this.currentTab = this.tabs[0];
+    this.currentTab = this.tabs[0]; // first tab active by default
   }
   chooseTab(tab): void {
     this.currentTab = tab;
