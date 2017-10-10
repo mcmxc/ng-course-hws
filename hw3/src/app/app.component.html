@@ -40,11 +40,13 @@
 <hr>
 <section class="dropdown--section">
   <h1>Dropdown</h1>
-  <app-dropdown [items]="dropdownItems"></app-dropdown>
+  <app-dropdown
+    [items]="dropdownItems"
+    (itemPicked)="onDropdownChange($event)"
+  ></app-dropdown>
 </section>
 <hr>
 <section class="tabs--section">
   <h1>Tabs</h1>
   <app-tabs [tabs]="tabs"></app-tabs>
 </section>
-

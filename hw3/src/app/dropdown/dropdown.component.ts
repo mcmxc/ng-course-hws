@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { DropdownItem } from '../models/dropdownItem.model';
 
 @Component({
@@ -8,6 +8,7 @@ import { DropdownItem } from '../models/dropdownItem.model';
 })
 export class DropdownComponent {
   @Input() items: DropdownItem[];
+  @Output() itemPicked: EventEmitter<DropdownItem> = new EventEmitter();
 
   currentItem: DropdownItem = new DropdownItem('Choose item...', 'none');
   isShown = false;
@@ -19,5 +20,6 @@ export class DropdownComponent {
   pickItem(item): void {
     this.currentItem = item;
     this.toggleDropdown();
+    this.itemPicked.emit(item);
   }
 }

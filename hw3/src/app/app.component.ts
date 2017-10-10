@@ -25,7 +25,11 @@ export class AppComponent {
     new Tab('Three', 'Tab 3', 'Tab 3 content')
   ];
 
-  randomizeProgress() {
+  randomizeProgress(): void {
     this.progress = `${(Math.random() * 100).toFixed()}`;
+  }
+
+  onDropdownChange(item): void {
+    console.log(`${item.name} was picked with a value of ${item.value}`);
   }
 }
