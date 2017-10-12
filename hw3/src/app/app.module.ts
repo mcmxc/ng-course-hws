@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { DropdownComponent } from './dropdown/dropdown.component';
 import { TabsComponent } from './tabs/tabs.component';
+import { TabComponent } from './tabs/tab/tab.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProgressBarComponent,
     DropdownComponent,
-    TabsComponent
+    TabsComponent,
+    TabComponent
   ],
   imports: [
     BrowserModule,

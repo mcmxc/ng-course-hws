@@ -2,7 +2,12 @@
 <hr>
 <section class="progress-bar--section">
   <h1>Progress Bar</h1>
-  <app-progress-bar [progress]="progress"></app-progress-bar>
+  <app-progress-bar
+    label="Progress Bar 1"
+    [progress]="progress"
+    (progressStarted)="onProgressStarted($event)"
+    (progressEnded)="onProgressEnded($event)"
+  ></app-progress-bar>
   <section class="progress-bar-controls">
     <h1>Controls</h1>
     <p>
@@ -48,5 +53,13 @@
 <hr>
 <section class="tabs--section">
   <h1>Tabs</h1>
-  <app-tabs [tabs]="tabs"></app-tabs>
+  <app-tabs>
+    <app-tab header="Tab 1" label="One">
+      Tab content 1
+    </app-tab>
+    <app-tab header="Tab 2" label="Two">
+      Tab content 2
+      <button type="button" (click)="testButton()">Click</button>
+    </app-tab>
+  </app-tabs>
 </section>

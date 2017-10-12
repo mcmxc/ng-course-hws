@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 
 import { DropdownItem } from './models/dropdownItem.model';
-import { Tab } from './models/tab.model';
 
 @Component({
   selector: 'app-root',
@@ -19,17 +18,24 @@ export class AppComponent {
     new DropdownItem('Item 5', 'Item 5 value')
   ];
 
-  tabs: Tab[] = [
-    new Tab('One', 'Tab 1', 'Tab 1 content'),
-    new Tab('Two', 'Tab 2', 'Tab 2 content'),
-    new Tab('Three', 'Tab 3', 'Tab 3 content')
-  ];
-
   randomizeProgress(): void {
     this.progress = `${(Math.random() * 100).toFixed()}`;
   }
 
+  onProgressStarted(e): void {
+    alert(`${e.label}'s progress has started`);
+  }
+
+  onProgressEnded(e): void {
+    alert(`${e.label}'s progress has ended`);
+  }
+
   onDropdownChange(item): void {
     console.log(`${item.name} was picked with a value of ${item.value}`);
+  }
+
+  testButton() {
+    // test event (for elements within a particular tab)
+    alert('it works');
   }
 }

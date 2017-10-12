@@ -1,4 +1,12 @@
-import {Component, Input, OnChanges, SimpleChanges, ViewEncapsulation} from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges,
+  ViewEncapsulation
+} from '@angular/core';
 
 @Component({
   selector: 'app-progress-bar',
@@ -8,8 +16,21 @@ import {Component, Input, OnChanges, SimpleChanges, ViewEncapsulation} from '@an
 })
 export class ProgressBarComponent implements OnChanges {
   @Input() progress: string;
+  @Input() label: string;
+  @Output()
+  progressStarted: EventEmitter<ProgressBarComponent> = new EventEmitter();
+  @Output()
+  progressEnded: EventEmitter<ProgressBarComponent> = new EventEmitter();
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log(changes['progress']);
+    const { currentValue, previousValue } = changes['progress'];
+    if (
+      (previousValue === 0 || currentValue === 0) &&
+      currentValue > previousValue
+    ) {
+      this.progressStarted.emit(this);
+    } else if (currentValue === 100) {
+      this.progressEnded.emit(this);
+    }
   }
 }

@@ -1,17 +1,13 @@
 <div class="tabs__component">
-  <ul class="tabs">
+  <ul class="tabs-list">
     <li
       *ngFor="let tab of tabs"
-      [ngClass]="{ 'active': isActive(tab), 'tab-link': true }"
-      (click)="chooseTab(tab)"
-    >{{tab.label}}</li>
+      [ngClass]="{ 'active': tab.isActive }"
+      class="tab-link"
+      (click)="pickTab(tab)"
+    >
+      {{tab.label}}
+    </li>
   </ul>
-  <div
-    *ngFor="let tab of tabs"
-    [id]="tab.label"
-    [ngClass]="{ 'active': isActive(tab), 'tab-content': true }"
-  >
-    <h1>{{tab.header}}</h1>
-    <p>{{tab.content}}</p>
-  </div>
+  <ng-content></ng-content>
 </div>

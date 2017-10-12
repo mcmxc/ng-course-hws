@@ -1,11 +1,4 @@
-.tab-content {
-  display: none;
-}
-
-.tab-content.active {
-  display: block;
-}
-.tabs {
+.tabs-list {
   list-style-type: none;
   padding: 0;
   display: flex;
@@ -26,9 +19,5 @@
   font-weight: bold;
   color: #333;
 }
-.tab-content {
-  background: #eee;
-  padding: 2rem;
-  margin-bottom: 35px;
-}
+
 

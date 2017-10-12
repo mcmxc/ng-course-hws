@@ -1,22 +1,34 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Tab } from '../models/tab.model';
+import {
+  AfterContentInit,
+  Component,
+  ContentChildren,
+  QueryList
+} from '@angular/core';
+
+import { TabComponent } from './tab/tab.component';
 
 @Component({
   selector: 'app-tabs',
   templateUrl: './tabs.component.html',
   styleUrls: ['./tabs.component.css']
 })
-export class TabsComponent implements OnInit {
-  @Input() tabs: Tab[];
-  currentTab: Tab;
-  ngOnInit() {
-    this.currentTab = this.tabs[0]; // first tab active by default
+export class TabsComponent implements AfterContentInit {
+  @ContentChildren(TabComponent) tabs: QueryList<TabComponent>;
+
+  ngAfterContentInit() {
+    this.pickTab(this.tabs.first);
   }
-  chooseTab(tab): void {
-    this.currentTab = tab;
+
+  pickTab(tab: TabComponent): void {
+    this.resetActive();
+    tab.isActive = true;
   }
-  isActive(tab): boolean {
-    return tab.label === this.currentTab.label;
+
+  resetActive(): void {
+    this.tabs.forEach((tab: TabComponent) => {
+      tab.isActive = false;
+    });
   }
+
   constructor() {}
 }
