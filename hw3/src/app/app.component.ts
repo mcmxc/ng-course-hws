@@ -31,7 +31,7 @@ export class AppComponent {
   }
 
   onDropdownChange(item): void {
-    console.log(`${item.name} was picked with a value of ${item.value}`);
+    alert(`${item.name} was picked with a value of ${item.value}`);
   }
 
   testButton() {
