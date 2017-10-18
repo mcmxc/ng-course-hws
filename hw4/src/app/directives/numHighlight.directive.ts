@@ -1,10 +1,10 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 
 @Directive({
-  selector: '[appNumHighlight]'
+  selector: '[numHighlight]'
 })
 export class NumHighlightDirective implements OnInit {
-  @Input('highlightMethod') highlightMethod: string;
+  @Input('numHighlight') highlightMethod: string;
 
   constructor(private elementRef: ElementRef) {
     this.elementRef = elementRef;
