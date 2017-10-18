@@ -3,21 +3,22 @@
 }
 
 .dragzone {
-  width: 100%;
-  min-height: 500px;
   text-align: center;
   background-color: #333333;
   color: #fff;
   position: relative;
   padding: 3rem;
   margin-bottom: 100px;
+  transition: background-color .5s;
 }
 .dragzone h1 {
   position: absolute;
+  font-size: 100%;
   top: 50%;
   transform: translateY(-50%);
   left: 0;
   right: 0;
   text-transform: uppercase;
 }
+
 
