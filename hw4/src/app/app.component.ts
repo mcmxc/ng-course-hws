@@ -8,4 +8,11 @@ import { Component, ViewEncapsulation } from '@angular/core';
 })
 export class AppComponent {
   constructor() {}
+
+  onDragStart(e) {
+    e.dataTransfer.setData(
+      'html',
+      e.target.outerHTML
+    );
+  }
 }

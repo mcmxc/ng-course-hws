@@ -1,6 +1,7 @@
 import {
   Directive,
   ElementRef,
+  HostBinding,
   HostListener,
   Input,
   OnInit
@@ -24,6 +25,7 @@ export class DragzoneDirective implements OnInit {
 
   ngOnInit() {
     const $dropMsgHeader = document.createElement('h1');
+    $dropMsgHeader.classList.add('drop-msg');
     $dropMsgHeader.innerText = this.dropMsg;
     this.host.appendChild($dropMsgHeader);
     this.setStyles(this.host, {
@@ -41,10 +43,22 @@ export class DragzoneDirective implements OnInit {
     return value === 'auto' ? value : value + 'px';
   }
 
+  @HostListener('DOMNodeInserted', ['$event'])
+  onHostContentChange(e) {
+    const droppedElements = Array.prototype.filter.call(
+      e.currentTarget.children,
+      child => child.classList.contains('dropped-el')
+    );
+
+    if (droppedElements.length === 1) {
+      this.host.querySelector('.drop-msg').remove();
+    }
+  }
+
   @HostListener('dragenter', ['$event'])
   @HostListener('dragleave', ['$event'])
   @HostListener('dragover', ['$event'])
-  onDragHover(e) {
+  preventBrowserDefault(e) {
     e.preventDefault();
   }
 
@@ -53,9 +67,9 @@ export class DragzoneDirective implements OnInit {
     e.preventDefault();
     const $draggedEl = document.createElement('div');
     $draggedEl.classList.add('dropped-el');
-    $draggedEl.innerText = e.dataTransfer.getData('text/plain');
+    $draggedEl.innerHTML =
+      e.dataTransfer.getData('html') || e.dataTransfer.getData('text');
     this.setStyles($draggedEl, { color: randomColor({ luminosity: 'light' }) });
     this.host.appendChild($draggedEl);
-    this.host.querySelector('h1').remove();
   }
 }

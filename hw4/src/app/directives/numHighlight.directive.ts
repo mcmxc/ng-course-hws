@@ -23,7 +23,10 @@ export class NumHighlightDirective implements OnInit {
   }
 
   highlight(content: string, method: (match: string) => string): void {
-    this.elementRef.nativeElement.innerHTML = content.replace(/\d+/g, method);
+    this.elementRef.nativeElement.innerHTML = content.replace(
+      /[+-]?(\d*[.|,])?\d+/g,
+      method
+    );
   }
 
   ngOnInit() {
