@@ -5,9 +5,9 @@ import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 })
 export class NumHighlightDirective implements OnInit {
   @Input('numHighlight') highlightMethod: string;
-
+  private host: HTMLElement;
   constructor(private elementRef: ElementRef) {
-    this.elementRef = elementRef;
+    this.host = elementRef.nativeElement;
   }
 
   bold(match: string): string {
@@ -23,14 +23,11 @@ export class NumHighlightDirective implements OnInit {
   }
 
   highlight(content: string, method: (match: string) => string): void {
-    this.elementRef.nativeElement.innerHTML = content.replace(
-      /[+-]?(\d*[.|,])?\d+/g,
-      method
-    );
+    this.host.innerHTML = content.replace(/[+-]?(\d*[.|,])?\d+/g, method);
   }
 
   ngOnInit() {
-    const htmlContent = this.elementRef.nativeElement.innerHTML;
+    const htmlContent = this.host.innerHTML;
     switch (this.highlightMethod) {
       case 'bold':
         this.highlight(htmlContent, this.bold);

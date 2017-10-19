@@ -1,7 +1,6 @@
 import {
   Directive,
   ElementRef,
-  HostBinding,
   HostListener,
   Input,
   OnInit
@@ -15,7 +14,6 @@ import randomColor from 'randomcolor';
 export class DragzoneDirective implements OnInit {
   private host: HTMLElement;
   constructor(private elementRef: ElementRef) {
-    this.elementRef = elementRef;
     this.host = elementRef.nativeElement;
   }
 
@@ -43,10 +41,10 @@ export class DragzoneDirective implements OnInit {
     return value === 'auto' ? value : value + 'px';
   }
 
-  @HostListener('DOMNodeInserted', ['$event'])
-  onHostContentChange(e) {
+  @HostListener('DOMNodeInserted', ['$event.currentTarget'])
+  onHostContentChange(currentTarget) {
     const droppedElements = Array.prototype.filter.call(
-      e.currentTarget.children,
+      currentTarget.children,
       child => child.classList.contains('dropped-el')
     );
 
