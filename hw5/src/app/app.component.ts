@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
+// import { CarsFilterPipe } from './pipes/carsFilter.pipe';
+
 import { BetType } from './helpers/BetType';
+
+import CARS from './helpers/cars';
 
 @Component({
   selector: 'app-root',
@@ -19,4 +23,8 @@ export class AppComponent {
   num: number;
 
   odd: string;
+
+  car = '';
+
+  CARS: string[] = CARS;
 }

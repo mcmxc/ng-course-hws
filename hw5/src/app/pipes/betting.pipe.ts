@@ -9,7 +9,7 @@ export class BettingPipe implements PipeTransform {
     if (!value) return;
     switch (type) {
       case 'eu':
-        return value + 'e';
+        return value;
       case 'us':
         return value + 'a';
       case 'uk':

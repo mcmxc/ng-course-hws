@@ -32,3 +32,20 @@
   </div>
 </section>
 <hr>
+<section class="array-filtering">
+  <h1>Task #3: Array filtering</h1>
+  <label>
+    Start typing <br>
+    <input
+      class="car-input"
+      type="text"
+      [(ngModel)]="car"
+    />
+  </label>
+  <ul
+    class="cars-list"
+    *ngFor="let car of CARS | carsFilter:car"
+  >
+    <li>{{ car }}</li>
+  </ul>
+</section>

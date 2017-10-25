@@ -52,3 +52,18 @@ select {
 .bets .inputs label {
   width: 30%;
 }
+
+.array-filtering label, .array-filtering ul {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.car-input {
+  text-transform: uppercase;
+}
+.cars-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
