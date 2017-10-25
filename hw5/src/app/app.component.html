@@ -1,0 +1,34 @@
+<section class="format-number">
+  <h1>Task #1: Number formatting</h1>
+  <div class="inputs">
+    <label>
+      Enter number: <br>
+      <input type="number" [(ngModel)]="num">
+    </label>
+    <label>
+      Choose format: <br>
+      <select name="format" id="format" [(ngModel)]="pickedFormat">
+        <option
+          *ngFor="let format of numberFormats"
+          [value]="format"
+        >{{ format }}</option>
+      </select>
+    </label>
+  </div>
+  <div class="result">{{ num | formatNumber:pickedFormat }}</div>
+</section>
+<hr>
+<section class="bets">
+  <h1>Task #2: Bets</h1>
+  <div class="inputs">
+    <label *ngFor="let oddFormat of oddFormats">
+      {{ oddFormat.label }} <br>
+      <input
+        type="text"
+        [ngModel]="odd | betsFormat:oddFormat.type"
+        (ngModelChange)="odd=$event"
+      >
+    </label>
+  </div>
+</section>
+<hr>

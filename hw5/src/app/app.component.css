@@ -1,0 +1,54 @@
+.result {
+  min-height: 100px;
+  line-height: 100px;
+  text-align: center;
+  font-size: 42px;
+}
+.inputs > label {
+  display: inline-block;
+  width: 48%;
+  text-align: center;
+  font-size: 1.25em;
+}
+select,
+input[type='number'],
+input[type='text'] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+select,
+input[type='number'],
+input[type='text'] {
+  min-height: 40px;
+  margin: 0.5rem 0;
+  padding: 6px;
+  border: 2px solid #eee;
+  border-radius: 4px;
+  width: 50%;
+  background: none;
+  text-align: center;
+  font-size: 1.35rem;
+}
+
+input[type='number']:focus,
+input[type='text']:focus,
+select:focus {
+  outline: none;
+  border-color: cyan;
+  border-width: 2px;
+}
+
+select {
+  background-image: linear-gradient(45deg, transparent 50%, gray 50%),
+    linear-gradient(135deg, gray 50%, transparent 50%);
+  background-position: calc(100% - 21px) calc(1em - 4px),
+    calc(100% - 16px) calc(1em - 4px), calc(100% - 2.5em) 0.5em;
+  background-size: 5px 5px, 5px 5px, 1px 1.5em;
+  background-repeat: no-repeat;
+}
+
+.bets .inputs label {
+  width: 30%;
+}
