@@ -1,7 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import odds from 'odds-converter';
-
 @Pipe({
   name: 'betsFormat'
 })
