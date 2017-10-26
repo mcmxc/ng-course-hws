@@ -2,16 +2,15 @@
   <h1>Task #1: Number formatting</h1>
   <div class="inputs">
     <label>
-      Enter number: <br>
+      Enter number:
+      <br>
       <input type="number" [(ngModel)]="num">
     </label>
     <label>
-      Choose format: <br>
+      Choose format:
+      <br>
       <select name="format" id="format" [(ngModel)]="pickedFormat">
-        <option
-          *ngFor="let format of numberFormats"
-          [value]="format"
-        >{{ format }}</option>
+        <option *ngFor="let format of numberFormats" [value]="format">{{ format }}</option>
       </select>
     </label>
   </div>
@@ -20,32 +19,61 @@
 <hr>
 <section class="bets">
   <h1>Task #2: Bets</h1>
-  <div class="inputs">
-    <label *ngFor="let oddFormat of oddFormats">
-      {{ oddFormat.label }} <br>
-      <input
-        type="text"
-        [ngModel]="odd | betsFormat:oddFormat.type"
-        (ngModelChange)="odd=$event"
-      >
+  <div class="decimal">
+    <label for="">
+      Decimal:
+      <br>
+      <input type="text" [(ngModel)]="decimalOdd" />
     </label>
+    <div class="odd-result">
+      <span class="type">American</span>
+      <span class="res">{{decimalOdd | betsFormat:'eu':'us'}}</span>
+    </div>
+    <div class="odd-result">
+      <span class="type">British</span>
+      <span class="res">{{decimalOdd | betsFormat:'eu':'uk'}}</span>
+    </div>
+  </div>
+  <div class="american">
+    <label for="">
+      American:
+      <br>
+      <input type="text" [(ngModel)]="americanOdd" />
+    </label>
+    <div class="odd-result">
+      <span class="type">Decimal</span>
+      <span class="res">{{americanOdd | betsFormat:'us':'eu'}}</span>
+    </div>
+    <div class="odd-result">
+      <span class="type">British</span>
+      <span class="res">{{americanOdd | betsFormat:'us':'uk'}}</span>
+    </div>
+  </div>
+  <div class="british">
+    <label for="">
+      British:
+      <br>
+      <input type="text" [(ngModel)]="britishOdd" />
+    </label>
+    <div class="odd-result">
+      <span class="type">Decimal</span>
+      <span class="res">{{britishOdd | betsFormat:'uk':'eu'}}</span>
+    </div>
+    <div class="odd-result">
+      <span class="type">American</span>
+      <span class="res">{{britishOdd | betsFormat:'uk':'us'}}</span>
+    </div>
   </div>
 </section>
 <hr>
 <section class="array-filtering">
   <h1>Task #3: Array filtering</h1>
   <label>
-    Start typing <br>
-    <input
-      class="car-input"
-      type="text"
-      [(ngModel)]="car"
-    />
+    Start typing
+    <br>
+    <input class="car-input" type="text" [(ngModel)]="car" />
   </label>
-  <ul
-    class="cars-list"
-    *ngFor="let car of CARS | carsFilter:car"
-  >
+  <ul class="cars-list" *ngFor="let car of CARS | carsFilter:car">
     <li>{{ car }}</li>
   </ul>
 </section>

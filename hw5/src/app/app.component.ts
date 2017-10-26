@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-// import { CarsFilterPipe } from './pipes/carsFilter.pipe';
-
-import { BetType } from './helpers/BetType';
-
 import CARS from './helpers/cars';
 
 @Component({
@@ -13,18 +9,12 @@ import CARS from './helpers/cars';
 })
 export class AppComponent {
   numberFormats: string[] = ['binary', 'decimal', 'hex'];
-  oddFormats: BetType[] = [
-    new BetType('European', 'eu'),
-    new BetType('American', 'us'),
-    new BetType('British', 'uk')
-  ];
-
-  pickedFormat = 'decimal';
   num: number;
 
-  odd: string;
+  pickedFormat = 'decimal';
 
-  car = '';
+  odd = '';
 
   CARS: string[] = CARS;
+  car = '';
 }

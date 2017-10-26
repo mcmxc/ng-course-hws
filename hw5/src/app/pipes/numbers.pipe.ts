@@ -5,7 +5,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FormatNumberPipe implements PipeTransform {
   transform(value: number, format: string): string {
-    if (!value) return;
+    if (!value) {
+      return;
+    }
     switch (format) {
       case 'binary':
         return value.toString(2);
@@ -18,4 +20,3 @@ export class FormatNumberPipe implements PipeTransform {
     }
   }
 }
-
