@@ -1,36 +1,73 @@
 .container {
-  min-height: 200px;
-  background-color: #e4e4e4;
+  min-height: 500px;
+  height: 500px;
+  position: relative;
+  margin: 0 10rem 0 5rem;
+}
+.panel-1, .panel-2 {
+  /*padding: 1rem;*/
+  overflow: hidden;
+}
+.panel-1 {
+  flex: 0 0 auto;
+  color: #fff;
+  background: darkcyan;
+}
+.panel-2 {
+  flex: 1;
+}
+
+.splitter-spot {
+  background-color: cyan;
+  position: absolute;
+}
+
+div[splitter] {
   position: relative;
 }
 
 .horizontal .splitter-spot {
   width: 10px;
+  height: 100%;
+  cursor: col-resize;
 }
-
 .vertical .splitter-spot {
-  height: 10px;
-}
-
-.splitter-spot:before {
-  display: inline-block;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%);
   width: 100%;
   height: 10px;
-  background-color: #333;
+  cursor: row-resize;
 }
+/*.horizontal .splitter-spot {*/
+  /*width: 10px;*/
+/*}*/
+/*.vertical .splitter-spot {*/
+  /*height: 10px;*/
+/*}*/
+/*.horizontal .splitter-spot:after {*/
+  /*content: '';*/
+/*}*/
+/*.vertical .splitter-spot:before {*/
+  /*content: '';*/
+/*}*/
+/*.splitter-spot:before {*/
+  /*display: inline-block;*/
+  /*position: absolute;*/
+  /*top: 50%;*/
+  /*left: 50%;*/
+  /*transform: translate(-50%);*/
+  /*width: 100%;*/
+  /*height: 10px;*/
+  /*background-color: #333;*/
+  /*cursor: row-resize;*/
+/*}*/
 
-.splitter-spot:after {
-  content: '';
-  display: inline-block;
-  position: absolute;
-  width: 10px;
-  height: 100%;
-  background: #333;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-}
+/*.splitter-spot:after {*/
+  /*display: inline-block;*/
+  /*position: absolute;*/
+  /*width: 10px;*/
+  /*height: 100%;*/
+  /*background: #333;*/
+  /*top: 0;*/
+  /*left: 50%;*/
+  /*transform: translateX(-50%);*/
+  /*cursor: col-resize;*/
+/*}*/
