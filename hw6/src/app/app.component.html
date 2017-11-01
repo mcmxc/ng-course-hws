@@ -1,8 +1,8 @@
 <h1>Splitter</h1>
 <div class="container">
-  <div splitter [options]="{ background: '#e4e4e4', orientation: 'horizontal' }">
+  <div splitter [options]="{ background: '#e4e4e4', orientation: 'horizontal', height: '500px' }" (stylesApplied)="onStylesApplied($event)">
     <div class="panel-1"></div>
-    <div class="splitter-spot" splitter-spot></div>
+    <div #splitterSpot class="splitter-spot" splitter-spot></div>
     <div class="panel-2"></div>
   </div>
 </div>

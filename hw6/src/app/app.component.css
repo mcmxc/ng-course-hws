@@ -1,11 +1,12 @@
+[splitter], [splitter-spot] {
+  display: block;
+}
 .container {
-  min-height: 500px;
-  height: 500px;
+  /*min-height: 500px;*/
+  /*height: 500px;*/
   position: relative;
-  margin: 0 10rem 0 5rem;
 }
 .panel-1, .panel-2 {
-  /*padding: 1rem;*/
   overflow: hidden;
 }
 .panel-1 {
