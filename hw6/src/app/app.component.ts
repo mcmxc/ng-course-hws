@@ -1,17 +1,11 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-
-import getEdges from './helpers/getEdges'
-import {SplitterDirective} from './splitter/splitter.directive';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
   constructor() {}
-
-  onStylesApplied(e) {
-    // console.log(getEdges(document.querySelector('.splitter-spot')))
-  }
 }

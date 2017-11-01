@@ -1,32 +1,31 @@
-[splitter], [splitter-spot] {
+[splitter],
+[splitter-spot] {
   display: block;
 }
 .container {
-  /*min-height: 500px;*/
-  /*height: 500px;*/
+  min-height: 500px;
+  height: 500px;
   position: relative;
 }
-.panel-1, .panel-2 {
+.panel--main,
+.panel--secondary {
   overflow: hidden;
 }
-.panel-1 {
+.panel--main {
   flex: 0 0 auto;
   color: #fff;
   background: darkcyan;
 }
-.panel-2 {
+.panel--secondary {
   flex: 1;
 }
-
 .splitter-spot {
   background-color: cyan;
   position: absolute;
 }
-
 div[splitter] {
   position: relative;
 }
-
 .horizontal .splitter-spot {
   width: 10px;
   height: 100%;
@@ -37,38 +36,3 @@ div[splitter] {
   height: 10px;
   cursor: row-resize;
 }
-/*.horizontal .splitter-spot {*/
-  /*width: 10px;*/
-/*}*/
-/*.vertical .splitter-spot {*/
-  /*height: 10px;*/
-/*}*/
-/*.horizontal .splitter-spot:after {*/
-  /*content: '';*/
-/*}*/
-/*.vertical .splitter-spot:before {*/
-  /*content: '';*/
-/*}*/
-/*.splitter-spot:before {*/
-  /*display: inline-block;*/
-  /*position: absolute;*/
-  /*top: 50%;*/
-  /*left: 50%;*/
-  /*transform: translate(-50%);*/
-  /*width: 100%;*/
-  /*height: 10px;*/
-  /*background-color: #333;*/
-  /*cursor: row-resize;*/
-/*}*/
-
-/*.splitter-spot:after {*/
-  /*display: inline-block;*/
-  /*position: absolute;*/
-  /*width: 10px;*/
-  /*height: 100%;*/
-  /*background: #333;*/
-  /*top: 0;*/
-  /*left: 50%;*/
-  /*transform: translateX(-50%);*/
-  /*cursor: col-resize;*/
-/*}*/

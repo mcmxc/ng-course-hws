@@ -1,40 +1,26 @@
 import {
-  AfterViewInit,
   Directive,
-  DoCheck,
   ElementRef,
-  EventEmitter,
   HostBinding,
   Input,
-  OnInit,
-  Output,
-  ViewChild
+  OnInit
 } from '@angular/core';
-import { SplitterSpotDirective } from './splitter-spot.directive';
 
-interface SplitterConfig {
-  background: string;
-  orientation: 'horizontal' | 'vertical';
-  height: string;
-}
+import { SplitterConfig } from './interfaces';
 
 @Directive({
   selector: '[splitter]'
 })
 export class SplitterDirective implements OnInit {
-  target: HTMLElement;
-
-  @Output('stylesApplied')
-  stylesApplied: EventEmitter<CSSStyleDeclaration> = new EventEmitter();
+  private target: HTMLElement;
 
   @Input('options') options: SplitterConfig;
 
   @HostBinding('style')
   private get styles() {
-    const { background, orientation, height } = this.options;
+    const { background, orientation } = this.options;
     return Object.assign(this.target.style, {
-      height: height,
-      minHeight: height,
+      height: '100%',
       width: '100%',
       display: 'flex',
       backgroundColor: background,

@@ -1,62 +1,31 @@
 import {
-  AfterViewInit,
   Directive,
   ElementRef,
   HostBinding,
   HostListener,
   Input,
+  OnDestroy,
   OnInit
 } from '@angular/core';
 
-import getEdges from './../helpers/getEdges';
+import { Edges } from './interfaces';
 
 @Directive({
   selector: '[splitter-spot]'
 })
-export class SplitterSpotDirective implements OnInit {
+export class SplitterSpotDirective implements OnInit, OnDestroy {
   private target: HTMLElement;
   private isMoving = false;
   private orientation: 'vertical' | 'horizontal';
-  private top: number;
-  private right: number;
-  private bottom: number;
-  private left: number;
+  private edges: Edges;
   private mainPanel: HTMLElement;
-  @Input('options') options;
+
+  @Input() mainPanelSelector;
+
   @HostBinding('class.splitter-spot') cls = true;
   @HostListener('mousedown')
   onMouseDown() {
     this.isMoving = true;
-  }
-  ngOnInit() {
-    this.orientation =
-      (this.target.classList.contains('vertical') && 'vertical') ||
-      'horizontal';
-
-    this.mainPanel = <HTMLElement>document.querySelector('.panel-1');
-    console.log(this.mainPanel);
-
-    if (this.orientation === 'horizontal') {
-      document.body.addEventListener(
-        'mousemove',
-        this.handleHorizontalSplitter.bind(this)
-      );
-    } else if (this.orientation === 'vertical') {
-      document.body.addEventListener(
-        'mousemove',
-        this.handleVerticalSplitter.bind(this)
-      );
-    } else {
-      throw new Error('splitter orientation is not set');
-    }
-    window.addEventListener('mouseup', this.onMouseUp.bind(this));
-    setTimeout(() => {
-      const { top, right, left, bottom } = getEdges(this.target);
-      this.top = top;
-      this.right = right;
-      this.bottom = bottom;
-      this.left = left;
-    }, 0);
   }
 
   constructor(private elementRef: ElementRef) {
@@ -72,12 +41,13 @@ export class SplitterSpotDirective implements OnInit {
     this.mainPanel.style.height = `${y}px`;
   }
   handleHorizontalSplitter(e) {
-    if (this.isMoving) {
-      this.setHorizontalSplitter(e.x - this.left);
-      if (e.x < this.left) {
+    const { isMoving, edges } = this;
+    if (isMoving) {
+      this.setHorizontalSplitter(e.x - edges.left);
+      if (e.x < edges.left) {
         this.setHorizontalSplitter(0);
       }
-      if (e.x > this.right - this.target.clientWidth) {
+      if (e.x > edges.right - this.target.clientWidth) {
         this.setHorizontalSplitter(
           this.target.offsetParent.clientWidth - this.target.clientWidth
         );
@@ -85,12 +55,13 @@ export class SplitterSpotDirective implements OnInit {
     }
   }
   handleVerticalSplitter(e) {
-    if (this.isMoving) {
-      this.setVerticalSplitter(e.y - this.top);
-      if (e.y < this.top) {
+    const { isMoving, edges } = this;
+    if (isMoving) {
+      this.setVerticalSplitter(e.y - edges.top);
+      if (e.y < edges.top) {
         this.setVerticalSplitter(0);
       }
-      if (e.y > this.bottom - this.target.clientHeight) {
+      if (e.y > edges.bottom - this.target.clientHeight) {
         this.setVerticalSplitter(
           this.target.offsetParent.clientHeight - this.target.clientHeight
         );
@@ -98,7 +69,54 @@ export class SplitterSpotDirective implements OnInit {
     }
   }
 
-  onMouseUp(e) {
+  onMouseUp() {
     this.isMoving = false;
+  }
+
+  ngOnInit() {
+    this.orientation =
+      (this.target.classList.contains('vertical') && 'vertical') ||
+      'horizontal';
+    this.mainPanel = <HTMLElement>document.querySelector(
+      this.mainPanelSelector
+    );
+    if (this.orientation === 'horizontal') {
+      document.body.addEventListener(
+        'mousemove',
+        this.handleHorizontalSplitter.bind(this)
+      );
+      this.setHorizontalSplitter(100); // default
+    } else if (this.orientation === 'vertical') {
+      document.body.addEventListener(
+        'mousemove',
+        this.handleVerticalSplitter.bind(this)
+      );
+      this.setVerticalSplitter(100); // default
+    } else {
+      throw new Error('splitter orientation is not set');
+    }
+    window.addEventListener('mouseup', this.onMouseUp.bind(this));
+    setTimeout(() => {
+      // TODO: ONLY SET TIMEOUT WORKED ¯ \ _ (ツ) _ / ¯
+      const {
+        top,
+        right,
+        left,
+        bottom
+      } = this.target.offsetParent.getBoundingClientRect();
+      this.edges = { top, right, left, bottom };
+    }, 0);
+  }
+
+  ngOnDestroy() {
+    window.removeEventListener('mouseup', this.onMouseUp.bind(this));
+    document.body.removeEventListener(
+      'mousemove',
+      this.handleVerticalSplitter.bind(this)
+    );
+    document.body.removeEventListener(
+      'mousemove',
+      this.handleHorizontalSplitter.bind(this)
+    );
   }
 }
