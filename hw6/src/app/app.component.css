@@ -11,16 +11,22 @@
 .panel--secondary {
   overflow: hidden;
 }
+.panel-content {
+  margin: 1.5rem;
+}
+.panel--secondary .panel-content {
+  margin-left: calc(1.5rem + 10px);
+}
 .panel--main {
   flex: 0 0 auto;
   color: #fff;
-  background: darkcyan;
+  background: #f67900;
 }
 .panel--secondary {
   flex: 1;
 }
 .splitter-spot {
-  background-color: cyan;
+  background-color: #333;
   position: absolute;
 }
 div[splitter] {

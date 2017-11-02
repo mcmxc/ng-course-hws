@@ -85,19 +85,19 @@ export class SplitterSpotDirective implements OnInit, OnDestroy {
         'mousemove',
         this.handleHorizontalSplitter.bind(this)
       );
-      this.setHorizontalSplitter(100); // default
+      this.setHorizontalSplitter(200); // default
     } else if (this.orientation === 'vertical') {
       document.body.addEventListener(
         'mousemove',
         this.handleVerticalSplitter.bind(this)
       );
-      this.setVerticalSplitter(100); // default
+      this.setVerticalSplitter(200); // default
     } else {
       throw new Error('splitter orientation is not set');
     }
     window.addEventListener('mouseup', this.onMouseUp.bind(this));
     setTimeout(() => {
-      // TODO: ONLY SET TIMEOUT WORKED ¯ \ _ (ツ) _ / ¯
+      // TODO: ASK ABOUT HEIGHT. ONLY SET TIMEOUT WORKED ¯ \ _ (ツ) _ / ¯
       const {
         top,
         right,

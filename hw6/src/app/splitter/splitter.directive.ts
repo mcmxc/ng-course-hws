@@ -13,20 +13,8 @@ import { SplitterConfig } from './interfaces';
 })
 export class SplitterDirective implements OnInit {
   private target: HTMLElement;
-
   @Input('options') options: SplitterConfig;
-
-  @HostBinding('style')
-  private get styles() {
-    const { background, orientation } = this.options;
-    return Object.assign(this.target.style, {
-      height: '100%',
-      width: '100%',
-      display: 'flex',
-      backgroundColor: background,
-      flexDirection: orientation === 'vertical' ? 'column' : 'row'
-    });
-  }
+  @Input('orientation') orientation: string;
   @HostBinding('class')
   get getCls() {
     return this.options.orientation;
@@ -37,8 +25,15 @@ export class SplitterDirective implements OnInit {
   }
 
   ngOnInit() {
-    this.target
-      .querySelector('.splitter-spot')
-      .classList.add(this.options.orientation);
+    const { background, orientation } = this.options;
+    this.target.querySelector('.splitter-spot').classList.add(orientation);
+
+    Object.assign(this.target.style, {
+      height: '100%',
+      width: '100%',
+      display: 'flex',
+      backgroundColor: background,
+      flexDirection: orientation === 'vertical' ? 'column' : 'row'
+    });
   }
 }
