@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,400i,700');
+html {
+  font-family: Poppins;
+}
+html,
+body,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+input {
+  margin: 0;
+  padding: 0 6px;
+  border: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+input,
+input:active,
+input:focus {
+  outline: none;
+}
+
+body {
+  width: 90%;
+  margin: 1rem auto;
+}

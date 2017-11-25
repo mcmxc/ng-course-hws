@@ -1,0 +1,16 @@
+button[type='submit'] {
+  -webkit-appearance: none;
+  background: #fff;
+  border: 2px solid #333;
+  color: #333;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 0;
+  padding: 10px 16px;
+  margin-top: 1rem;
+  float: right;
+}
+button[type='submit']:after {
+  clear: both;
+  display: table;
+}
