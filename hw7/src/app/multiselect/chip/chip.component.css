@@ -2,8 +2,10 @@
   display: inline-block;
   padding: 8px 12px;
   margin: 0 4px;
-  background-color: cyan;
+  background-color: #333;
+  color: #fff;
   border-radius: 4px;
+  flex-basis: 30px;
 }
 .remove {
   cursor: pointer;

@@ -1,5 +1,9 @@
 import { Component, forwardRef, ViewEncapsulation } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import {
+  ControlValueAccessor,
+  NG_VALUE_ACCESSOR,
+  NG_VALIDATORS
+} from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/operator/map';
@@ -23,7 +27,9 @@ import STATES from './../helpers/STATES';
         [(ngModel)]="value"
         [ngbTypeahead]="search"
         (selectItem)="onSelectItem($event)"
-      >
+        autofocus
+        required
+      />
     </div>
   `,
   styleUrls: ['./multiselect.component.css'],
@@ -33,6 +39,11 @@ import STATES from './../helpers/STATES';
       useExisting: forwardRef(() => MultiselectComponent),
       multi: true
     }
+    // {
+    //   provide: NG_VALIDATORS,
+    //   useExisting: forwardRef(() => MultiselectComponent),
+    //   multi: true
+    // }
   ],
   encapsulation: ViewEncapsulation.None
 })
@@ -41,7 +52,7 @@ export class MultiselectComponent implements ControlValueAccessor {
   selected: string[] = [];
 
   onItemRemoved(e) {
-    console.log('removing', e);
+    this.selected.splice(this.selected.indexOf(e), 1);
   }
 
   onSelectItem(e) {
@@ -58,9 +69,9 @@ export class MultiselectComponent implements ControlValueAccessor {
         term =>
           term.length < 2
             ? []
-            : STATES.filter(
-                v => v.toLowerCase().indexOf(term.toLowerCase()) > -1
-              ).slice(0, 10)
+            : STATES.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1)
+                .filter(el => !this.selected.includes(el))
+                .slice(0, 10)
       );
   propagateChange = (_: any) => {};
   writeValue(value) {

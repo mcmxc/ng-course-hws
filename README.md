@@ -5,4 +5,5 @@
 3. Homework 3 - [Angular - Components](https://github.com/mcmxc/ng-course-hws/tree/master/hw3)
 4. Homework 4 - [Angular - Directives](https://github.com/mcmxc/ng-course-hws/tree/master/hw4)
 5. Homework 5 - [Angular - Pipes](https://github.com/mcmxc/ng-course-hws/tree/master/hw5)
-5. Homework 6 - [Angular - Change Detection](https://github.com/mcmxc/ng-course-hws/tree/master/hw6)
+6. Homework 6 - [Angular - Change Detection](https://github.com/mcmxc/ng-course-hws/tree/master/hw6)
+7. Homework 7 - [Angular - Forms](https://github.com/mcmxc/ng-course-hws/tree/master/hw7)
