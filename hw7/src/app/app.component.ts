@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -9,19 +9,20 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
     
       <h1>Multiselect component</h1>
 
-      <form [formGroup]="form" (ngSubmit)="onSubmit($event)">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
         <multiselect
           formControlName="multiselect"
           [(ngModel)]="selectedStates"
-          required
         ></multiselect>
         
-        <button class="btn btn-primary" type="submit">
-          Submit
-        </button>
+        <button type="submit" [disabled]="form.invalid && form.touched">Submit</button>
 
       </form>
+
+      <div class="error-msg" *ngIf="form.get('multiselect').touched && form.get('multiselect').errors?.noStates">
+        Please choose at least one state
+      </div>
 
       <div class="selected-states" *ngIf="selectedStates.length">
         <h3>Selected states:</h3>
@@ -30,25 +31,34 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
         </ul>
       </div>
 
-      <span *ngIf="!form.get('multiselect') && form.get('multiselect').touched">form is invalidd</span>
-
     </div>
   `,
   styleUrls: ['./app.component.css']
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements OnInit {
   form: FormGroup;
   selectedStates: string[] = [];
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor() {}
 
   ngOnInit() {
-    this.form = this.formBuilder.group({
-      multiselect: [null, Validators.required]
+    this.form = new FormGroup({
+      multiselect: new FormControl(
+        [],
+        [Validators.required, this.validateStates.bind(this)]
+      )
     });
   }
 
-  onSubmit(e) {
+  validateStates(control: FormControl) {
+    if (!control.value.length) {
+      return { noStates: true };
+    }
+    return null;
+  }
+
+  onSubmit() {
     console.log(this.form.value);
   }
 }

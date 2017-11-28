@@ -1,8 +1,14 @@
-import { Component, forwardRef, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  forwardRef,
+  ViewEncapsulation,
+  ChangeDetectionStrategy
+} from '@angular/core';
 import {
   ControlValueAccessor,
   NG_VALUE_ACCESSOR,
-  NG_VALIDATORS
+  NG_VALIDATORS,
+  FormControl
 } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 
@@ -27,8 +33,8 @@ import STATES from './../helpers/STATES';
         [(ngModel)]="value"
         [ngbTypeahead]="search"
         (selectItem)="onSelectItem($event)"
+        (blur)="onBlur()"
         autofocus
-        required
       />
     </div>
   `,
@@ -39,20 +45,17 @@ import STATES from './../helpers/STATES';
       useExisting: forwardRef(() => MultiselectComponent),
       multi: true
     }
-    // {
-    //   provide: NG_VALIDATORS,
-    //   useExisting: forwardRef(() => MultiselectComponent),
-    //   multi: true
-    // }
   ],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MultiselectComponent implements ControlValueAccessor {
-  value: string;
+  private value: string;
   selected: string[] = [];
 
   onItemRemoved(e) {
     this.selected.splice(this.selected.indexOf(e), 1);
+    this.propagateChange(this.selected);
   }
 
   onSelectItem(e) {
@@ -60,6 +63,10 @@ export class MultiselectComponent implements ControlValueAccessor {
     this.selected.push(e.item);
     this.value = '';
     this.propagateChange(this.selected);
+    this.onTouched();
+  }
+  onBlur() {
+    this.onTouched();
   }
   search = (text$: Observable<string>) =>
     text$
@@ -74,11 +81,14 @@ export class MultiselectComponent implements ControlValueAccessor {
                 .slice(0, 10)
       );
   propagateChange = (_: any) => {};
+  onTouched = () => {};
   writeValue(value) {
     this.value = value;
   }
   registerOnChange(fn) {
     this.propagateChange = fn;
   }
-  registerOnTouched() {}
+  registerOnTouched(fn) {
+    this.onTouched = fn;
+  }
 }

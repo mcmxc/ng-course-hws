@@ -1,4 +1,5 @@
 button[type='submit'] {
+  font-family: Poppins;
   -webkit-appearance: none;
   background: #fff;
   border: 2px solid #333;
@@ -9,14 +10,13 @@ button[type='submit'] {
   padding: 10px 16px;
   margin-top: 1rem;
   float: right;
-  letter-spacing: 1px;
   -webkit-transition: all 0.6s;
   transition: all 0.6s;
   outline: 0 !important;
   -webkit-box-shadow: 0px 1px 11px 8px #eee;
   box-shadow: 0px 1px 11px 8px #eee;
 }
-button[type='submit']:hover {
+button[type='submit']:not([disabled]):hover {
   background-color: #333;
   color: #fff;
   cursor: pointer;
@@ -25,6 +25,15 @@ button[type='submit']:active {
   -webkit-transform: scale(0.9);
   transform: scale(0.9);
 }
+button[type='submit'][disabled] {
+  opacity: 0.66;
+}
+
 .selected-states__list {
   list-style-type: square;
+}
+
+.error-msg {
+  color: #f67900;
+  margin: 0.5rem 0;
 }

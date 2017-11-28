@@ -1,5 +1,11 @@
-import { ReactiveFormsModule } from '@angular/forms';
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  Output,
+  EventEmitter,
+  ChangeDetectionStrategy
+} from '@angular/core';
 
 @Component({
   selector: 'chip',
@@ -9,7 +15,8 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
       <span class="remove" (click)="removeItem($event)">&times;</span>
     </span>
   `,
-  styleUrls: ['./chip.component.css']
+  styleUrls: ['./chip.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChipComponent implements OnInit {
   value: string;
